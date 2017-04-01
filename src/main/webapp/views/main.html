@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+    <script src="../App.js"></script>
+    <script src="../js/controllers/user_controller.js"></script>
+    <script src="../js/services/user_service.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="UserController as vm">
+    <table>
+        <thread>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+                <th>Email</th>
+            </tr>
+        </thread>
+        <tbody>
+        <tr ng-repeat="u in vm.users">
+            <td><span ng-bind="u.name"></span></td>
+            <td><span ng-bind="u.surname"></span></td>
+            <td><span ng-bind="u.age"></span></td>
+            <td><span ng-bind="u.email"></span></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+
+</body>
+</html>
