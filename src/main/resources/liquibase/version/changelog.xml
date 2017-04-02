@@ -1,0 +1,60 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="user_table" author="mike">
+        <createTable tableName="user_">
+            <column name="id" autoIncrement="true" type="int">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="age" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="disk_table" author="mike">
+        <createTable tableName="disk">
+            <column name="id" autoIncrement="true" type="int">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="title" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rating" type="varchar(128)"></column>
+            <column name="description" type="varchar(128)"></column>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="taken_items_table" author="mike">
+        <createTable tableName="takenitems">
+            <column name="id" autoIncrement="true" type="int">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="disk_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <!--
+        <addForeignKeyConstraint baseTableName="disk" baseColumnNames="id" constraintName="FK_disk" referencedTableName="takenitems"
+                                 referencedColumnNames="disk_id"/>
+        <addForeignKeyConstraint baseTableName="user_" baseColumnNames="id" constraintName="FK_user" referencedTableName="takenitems"
+                                 referencedColumnNames="user_id"/>
+        -->
+    </changeSet>
+</databaseChangeLog>
