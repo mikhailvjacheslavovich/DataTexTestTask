@@ -1,12 +1,12 @@
 'use strict';
 
-App.controller("UserController", ['$scope', 'UserService', function ($scope, UserService) {
+App.controller("UserController", ['$scope', 'DiskService', function ($scope, DiskService) {
     var self = this;
     self.user = {name: '', surname: '', age: 0, email: ''};
     self.users = [];
 
     self.fetchAllUsers = function () {
-        UserService.fetchAllUsers().then(
+        DiskService.fetchAllUsers().then(
             function (d) {
                 self.users = d;
             },

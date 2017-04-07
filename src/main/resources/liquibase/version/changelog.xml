@@ -3,24 +3,24 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
     <changeSet id="user_table" author="mike">
-        <createTable tableName="user_">
+        <createTable tableName="users">
             <column name="id" autoIncrement="true" type="int">
                 <constraints primaryKey="true"/>
             </column>
             <column name="name" type="varchar(128)">
-                <constraints nullable="false"/>
+
             </column>
             <column name="surname" type="varchar(128)">
-                <constraints nullable="false"/>
+
             </column>
             <column name="age" type="int">
-                <constraints nullable="false"/>
+
             </column>
             <column name="email" type="varchar(128)">
-                <constraints nullable="false"/>
+
             </column>
             <column name="password" type="varchar(128)">
-                <constraints nullable="false"/>
+
             </column>
         </createTable>
     </changeSet>
@@ -30,31 +30,168 @@
             <column name="id" autoIncrement="true" type="int">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="title" type="varchar(128)">
+            <column name="owner" type="int">
                 <constraints nullable="false"/>
+            </column>
+            <column name="title" type="varchar(128)">
+
             </column>
             <column name="rating" type="varchar(128)"></column>
             <column name="description" type="varchar(128)"></column>
         </createTable>
     </changeSet>
-    
+
+
+
+
+
+
+
+
+
+
+
     <changeSet id="taken_items_table" author="mike">
         <createTable tableName="takenitems">
-            <column name="id" autoIncrement="true" type="int">
-                <constraints primaryKey="true"/>
-            </column>
             <column name="disk_id" type="int">
                 <constraints nullable="false"/>
             </column>
-            <column name="user_id" type="int">
+            <column name="users_id" type="int">
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <!--
-        <addForeignKeyConstraint baseTableName="disk" baseColumnNames="id" constraintName="FK_disk" referencedTableName="takenitems"
-                                 referencedColumnNames="disk_id"/>
-        <addForeignKeyConstraint baseTableName="user_" baseColumnNames="id" constraintName="FK_user" referencedTableName="takenitems"
-                                 referencedColumnNames="user_id"/>
-        -->
+        <addForeignKeyConstraint constraintName="FK-disk_users_disk" referencedTableName="disk"
+                                 baseColumnNames="disk_id" baseTableName="takenitems" referencedColumnNames="id"/>
+        <addForeignKeyConstraint constraintName="FK_disk_disk_users" referencedTableName="users" baseColumnNames="users_id"
+                                 baseTableName="takenitems" referencedColumnNames="id"/>
     </changeSet>
+
+        <changeSet id="data" author="mike">
+        <insert tableName="users">
+            <column name="id">1</column>
+            <column name="name">Sergey</column>
+            <column name="surname">Ponomarev</column>
+            <column name="age">25</column>
+            <column name="email">lox@ya.ru</column>
+            <column name="password">qwerty</column>
+        </insert>
+        <insert tableName="users">
+            <column name="id">2</column>
+            <column name="name">Anatoly</column>
+            <column name="surname">Kasparov</column>
+            <column name="age">20</column>
+            <column name="email">kasper@ya.ru</column>
+            <column name="password">12345</column>
+        </insert>
+        <insert tableName="users">
+            <column name="id">3</column>
+            <column name="name">Kashtan</column>
+            <column name="surname">Lama-Piter</column>
+            <column name="age">45</column>
+            <column name="email">Zeus-lama@ya.ru</column>
+            <column name="password">qwerty</column>
+        </insert>
+
+        <insert tableName="users">
+            <column name="id">4</column>
+            <column name="name">Admin</column>
+            <column name="surname">Admin</column>
+            <column name="age">100</column>
+            <column name="email">admin@ya.ru</column>
+            <column name="password">11111</column>
+        </insert>
+
+        <insert tableName="disk">
+            <column name="id">1</column>
+            <column name="owner">1</column>
+            <column name="title">Война и мир</column>
+            <column name="rating">18+</column>
+            <column name="description">Хороший диск</column>
+        </insert>
+        <insert tableName="disk">
+            <column name="id">2</column>
+            <column name="owner">1</column>
+            <column name="title">мир новый дивный</column>
+            <column name="rating">16+</column>
+            <column name="description">Отличная книга</column>
+        </insert>
+        <insert tableName="disk">
+            <column name="id">3</column>
+            <column name="owner">1</column>
+            <column name="title">Зимняя вишня</column>
+            <column name="rating">6+</column>
+            <column name="description">Интересный диск</column>
+        </insert>
+        <insert tableName="disk">
+            <column name="id">4</column>
+            <column name="owner">1</column>
+            <column name="title">История Рима</column>
+            <column name="rating">12+</column>
+            <column name="description">Про Рим</column>
+        </insert>
+        <insert tableName="disk">
+            <column name="id">5</column>
+            <column name="owner">1</column>
+            <column name="title">Древняя Греция</column>
+            <column name="rating">10+</column>
+            <column name="description">Про Грецию</column>
+        </insert>
+        <insert tableName="disk">
+            <column name="id">6</column>
+            <column name="owner">1</column>
+            <column name="title">Про меопатамию</column>
+            <column name="rating">18+</column>
+            <column name="description">Древняя месопатамия</column>
+        </insert>
+        <insert tableName="disk">
+            <column name="id">7</column>
+            <column name="owner">1</column>
+            <column name="title">Война</column>
+            <column name="rating">18+</column>
+            <column name="description">Хорошая книга</column>
+        </insert>
+        <insert tableName="disk">
+            <column name="id">8</column>
+            <column name="owner">1</column>
+            <column name="title">мир</column>
+            <column name="rating">18+</column>
+            <column name="description">Хорошая книга</column>
+        </insert>
+
+        <insert tableName="takenitems">
+            <column name="disk_id">1</column>
+            <column name="users_id">4</column>
+        </insert>
+        <insert tableName="takenitems">
+            <column name="disk_id">2</column>
+            <column name="users_id">4</column>
+        </insert>
+        <insert tableName="takenitems">
+            <column name="disk_id">3</column>
+            <column name="users_id">4</column>
+        </insert>
+        <insert tableName="takenitems">
+            <column name="disk_id">4</column>
+            <column name="users_id">4</column>
+        </insert>
+        <insert tableName="takenitems">
+            <column name="disk_id">5</column>
+            <column name="users_id">4</column>
+        </insert>
+        <insert tableName="takenitems">
+            <column name="disk_id">6</column>
+            <column name="users_id">4</column>
+        </insert>
+        <insert tableName="takenitems">
+            <column name="disk_id">7</column>
+            <column name="users_id">4</column>
+        </insert>
+        <insert tableName="takenitems">
+            <column name="disk_id">8</column>
+            <column name="users_id">4</column>
+        </insert>
+
+
+    </changeSet>
+
 </databaseChangeLog>

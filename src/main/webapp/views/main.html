@@ -3,13 +3,35 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
     <script src="../App.js"></script>
     <script src="../js/controllers/user_controller.js"></script>
-    <script src="../js/services/user_service.js"></script>
+    <script src="../js/services/disk_service.js"></script>
+    <script src="../js/controllers/freeDisksCtrl.js"></script>
+    <script src="../js/controllers/givenDisksCtrl.js"></script>
+    <script src="../js/controllers/takenDisksCtrl.js"></script>
+    <script src="../js/controllers/addDiskCtrl.js"></script>
 </head>
 <body ng-app="myApp">
+
 <div ng-controller="UserController as vm">
+
+    <H1>Основная страница</H1>
+
+    <h5>Таблица дисков</h5>
+    <a href="#freedisks">Свободные диски</a>
+    <a href="#takendisks">Взятые мной диски</a>
+    <a href="#givendisks">Отданные диски</a>
+    <a href="#addDisk">Добавить диск</a>
+
+    <div ng-view>
+
+    </div>
+
+
+    <h5>Таблица пользователей</h5>
     <table>
         <thread>
             <tr>
@@ -30,8 +52,6 @@
     </table>
 
 </div>
-
-
 
 </body>
 </html>

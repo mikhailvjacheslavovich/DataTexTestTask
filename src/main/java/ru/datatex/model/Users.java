@@ -1,37 +1,71 @@
 package ru.datatex.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-/**
- * Created by MainWork on 01.04.2017.
- */
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Entity
-@Table(name = "Users")
-public class Users {
-    @Id
-    private Long id;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "surname")
-    private String surname;
-    @Column(name = "age")
-    private Integer age;
-    @Column(name = "email")
-    private String email;
-    @Column(name = "password")
-    private String password;
+@Table(name = "USERS")
+public class Users implements Serializable {
 
+    private Long id;
+    private String name;
+    private String surname;
+    private Integer age;
+    private String email;
+    private String password;
+    private Set<Disk> disks = new HashSet<Disk>(0);
+
+
+    public Users() {
+    }
+
+    public Users(String name, String surname, Integer age, String email, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.email = email;
+        this.password = password;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    public Long getId() {
+        return id;
+    }
+
+    @Column(name = "name")
     public String getName() {
         return name;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "TAKENITEMS", joinColumns = {@JoinColumn(name = "USERS_ID", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "DISK_ID", nullable = false, updatable = false)})
+    @JsonBackReference
+    public Set<Disk> getDisks() {
+        return this.disks;
+    }
+
+    public void setDisks(Set<Disk> disks) {
+        this.disks = disks;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    @Column(name = "surname")
     public String getSurname() {
         return surname;
     }
@@ -40,6 +74,7 @@ public class Users {
         this.surname = surname;
     }
 
+    @Column(name = "age")
     public Integer getAge() {
         return age;
     }
@@ -48,6 +83,7 @@ public class Users {
         this.age = age;
     }
 
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -56,6 +92,7 @@ public class Users {
         this.email = email;
     }
 
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -63,4 +100,5 @@ public class Users {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
