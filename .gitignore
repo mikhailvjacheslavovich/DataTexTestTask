@@ -1,0 +1,14 @@
+# Created by .ignore support plugin (hsz.mobi)
+target/
+
+*.bak
+*~
+
+.classpath
+.gitidnore
+.project
+.settings/
+bin/
+DEADJOE
+gen/
+/.idea/
