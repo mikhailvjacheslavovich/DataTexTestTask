@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller("freeDisksCtrl", ['$scope', 'DiskService', function ($scope, DiskService) {
+App.controller("freeDisksCtrl", ['$scope','$rootScope', 'DiskService', function ($scope,$rootScope, DiskService) {
     var self = this;
     self.disk = {id: 0, title: '', rating: '', description: ''};
     self.disks = [];
@@ -20,8 +20,8 @@ App.controller("freeDisksCtrl", ['$scope', 'DiskService', function ($scope, Disk
 
     self.getFreeDisks();
 
-    $scope.rentDisk = function (disk_id, user_id) {
-        DiskService.rentDisk(disk_id, user_id);
+    $scope.rentDisk = function (disk_id) {
+        DiskService.rentDisk(disk_id, $rootScope.userId);
         self.getFreeDisks();
     }
 }]);

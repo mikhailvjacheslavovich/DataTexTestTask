@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.datatex.model.Disk;
 import ru.datatex.model.Users;
+import ru.datatex.util.AppConstants;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,11 +18,12 @@ import java.util.Set;
 
 
 @Service
-public class DataDao {
+public class DiskDataProvider {
 
     @Autowired
     SessionFactory sessionFactory;
-
+    @Autowired
+    AppConstants appConstants;
     @Transactional
     public List<Users> getAllUsers() {
         List<Users> users = new ArrayList<Users>();
@@ -38,7 +40,6 @@ public class DataDao {
         return users;
     }
 
-    //getFreeDisks
     @Transactional
     public List<Disk> getFreeDisks(Long id) {
         List<Disk> disks = new ArrayList<Disk>();
@@ -46,7 +47,7 @@ public class DataDao {
             Session session = sessionFactory.openSession();
             Criteria crit = session.createCriteria(Disk.class);
             crit.createAlias("users", "us");
-            crit.add(Restrictions.eq("us.id", new Long(4)));
+            crit.add(Restrictions.eq("us.id", appConstants.ADMINID));
             crit.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
             disks = (List<Disk>) crit.list();
 
@@ -58,17 +59,17 @@ public class DataDao {
     }
 
     @Transactional
-    public void addDisk(String title, String rating, String description) {
+    public void addDisk(String title, String rating, String description,Long ownerId) {
         try {
             Session session = sessionFactory.openSession();
 
             Criteria cr = session.createCriteria(Users.class);
-            cr.add(Restrictions.eq("id",new Long(4)));
+            cr.add(Restrictions.eq("id",appConstants.ADMINID));
             Set<Users> lst = new HashSet<Users>();
             Users us  = (Users) cr.uniqueResult();
             lst.add(us);
             session.beginTransaction();
-            session.saveOrUpdate(new Disk(new Long(1), title, rating, description, lst));
+            session.saveOrUpdate(new Disk(ownerId, title, rating, description, lst));
             session.getTransaction().commit();
 
             session.close();
@@ -110,7 +111,7 @@ public class DataDao {
             crit.add(Restrictions.eq("id", diskId));
             Disk disk = (Disk) crit.uniqueResult();
             Criteria cr = session.createCriteria(Users.class);
-            cr.add(Restrictions.eq("id", new Long(4)));
+            cr.add(Restrictions.eq("id", appConstants.ADMINID));
             Users user = (Users) cr.uniqueResult();
 
             disk.getUsers().clear();
@@ -152,8 +153,8 @@ public class DataDao {
             Criteria criteria = session.createCriteria(Disk.class);
             criteria.add(Restrictions.eq("owner", id));
             criteria.createAlias("users", "us");
-            criteria.add(Restrictions.ne("us.id", new Long(4)));
-            criteria.add(Restrictions.ne("us.id", new Long(1)));
+            criteria.add(Restrictions.ne("us.id", appConstants.ADMINID));
+            criteria.add(Restrictions.ne("us.id", id));
             criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
             disks = (List<Disk>) criteria.list();
 

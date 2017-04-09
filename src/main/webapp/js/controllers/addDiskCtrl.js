@@ -8,5 +8,10 @@ App.controller("addDiskCtrl", ['$scope', 'DiskService', function ($scope, DiskSe
     self.addDisk = function () {
         DiskService.addDisk(self.disk);
     };
-
+    self.logined = function () {
+        if ($rootScope.userId == 0)
+            return false;
+        else
+            return true;
+    }
 }]);

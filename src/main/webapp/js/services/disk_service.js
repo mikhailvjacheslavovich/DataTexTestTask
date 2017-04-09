@@ -73,14 +73,27 @@ App.factory('DiskService', ['$http', '$q', function ($http, $q) {
                 params: {disk_id: disk_id, user_id: user_id}
             });
         },
-        addDisk: function (disk) {
+        addDisk: function (disk, owner_id) {
             return $http({
                 method: 'POST',
                 url: '/addDisk',
-                params: {title: disk.title, rating: disk.rating, description: disk.description}
-                //data: 'title=' + disk.title + '&rating=' + disk.rating + '&description=' + disk.description,
-                //headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                params: {title: disk.title, rating: disk.rating, description: disk.description, owner_id: owner_id}
             });
+        },
+        getLogin: function (email, password) {
+            return $http({
+                method: 'GET',
+                url: "/getLogin",
+                params: {email: email, password: password}
+            }).then(
+                function (response) {
+                    return response.data
+                },
+                function (errResponse) {
+                    console.error('error');
+                    return $q.reject(errResponse);
+                }
+            )
         }
     }
 }]);

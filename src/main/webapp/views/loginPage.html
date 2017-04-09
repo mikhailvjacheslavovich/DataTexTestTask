@@ -1,0 +1,17 @@
+<div ng-controller="loginCtrl as vm">
+    <div class="col-lg-12">
+        <div class="form-group" ng-hide="vm.logined()">
+            <label class="text-info">Email:</label>
+            <input type="text" class="form-group" id="userName" ng-model="email"> </input>
+            <label class="text-info">Password:</label>
+            <input type="password" class="form-group" id="password" ng-model="password"> </input>
+
+            <button class="btn btn-primary" ng-click="vm.logi()">Submit</button>
+
+        </div>
+        <div ng-show="vm.logined()">
+        <label  class="text-primary"><h4>Добрый день {{vm.user.name}} {{vm.user.surname}}</h4></label>
+        <button class="text-primary" ng-click="vm.logOut()">LogOut</button>
+        </div>
+    </div>
+</div>

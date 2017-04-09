@@ -36,9 +36,10 @@ public class DiskController {
     @RequestMapping(value = "/addDisk", method = RequestMethod.POST)
     public void addDisk(@RequestParam(value = "title") String title,
                         @RequestParam(value = "rating") String rating,
-                        @RequestParam(value = "description") String description) {
+                        @RequestParam(value = "description") String description,
+                        @RequestParam(value = "owner_id") Long ownerId) {
 
-        diskService.addDisk(title, rating, description);
+        diskService.addDisk(title, rating, description, ownerId);
     }
 
 
@@ -52,6 +53,4 @@ public class DiskController {
                            @RequestParam(value = "user_id") Long userId){
         diskService.returnDisk(diskId,userId);
     }
-
-
 }

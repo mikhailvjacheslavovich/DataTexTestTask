@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller("UserController", ['$scope', 'DiskService', function ($scope, DiskService) {
+App.controller("UserController", ['$scope','$rootScope', 'DiskService', function ($scope,$rootScope, DiskService) {
     var self = this;
     self.user = {name: '', surname: '', age: 0, email: ''};
     self.users = [];
@@ -16,4 +16,9 @@ App.controller("UserController", ['$scope', 'DiskService', function ($scope, Dis
         );
     };
     self.fetchAllUsers();
+
+    self.sayHello = function () {
+        alert($rootScope.userId)
+    }
+
 }]);

@@ -1,7 +1,18 @@
 <div ng-controller="addDiskCtrl as vm">
-    <input type="text" ng-model="vm.disk.title" placeholder="Введите название">Введите название</input>
-    <input type="text" ng-model="vm.disk.rating" placeholder="Введите рейтинг">Введите рейтинг</input>
-    <input type="text" ng-model="vm.disk.description" placeholder="Введите описание">Введите описание</input>
+    <div class="chart-vertical-grid-lines">
+        <div class="col-lg-5">
+            <div class="form-group">
+                <span class="text-info">Введите название</span>
+                <input class="form-control" type="text" ng-model="vm.disk.title"
+                       placeholder="Введите название"/>                </input>
+                <span class="text-info">Введите рейтинг</span>
+                <input class="form-control" type="text" ng-model="vm.disk.rating" placeholder="Введите рейтинг"/>
+                <span class="text-info">Введите описание</span>
+                <input class="form-control" type="text" ng-model="vm.disk.description" placeholder="Введите описание"/>
+                <button ng-disabled="vm.logined()" class="btn-primary" ng-click="vm.addDisk()"><span class="alert-info">Добавить диск</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
-    <button ng-click="vm.addDisk()">Добавить диск</button>
 </div>

@@ -2,7 +2,7 @@ package ru.datatex.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.datatex.database.DataDao;
+import ru.datatex.database.DiskDataProvider;
 import ru.datatex.model.Disk;
 import ru.datatex.model.Users;
 
@@ -12,34 +12,34 @@ import java.util.List;
 public class DiskService {
 
     @Autowired
-    DataDao dataDao;
+    DiskDataProvider diskDataProvider;
 
-    public List<Users> getUsers(){
-        return dataDao.getAllUsers();
+    public List<Users> getUsers() {
+        return diskDataProvider.getAllUsers();
     }
 
-    public List<Disk> getFreeDisks(Long id){
-        return dataDao.getFreeDisks(id);
+    public List<Disk> getFreeDisks(Long id) {
+        return diskDataProvider.getFreeDisks(id);
     }
 
-    public void addDisk(String title, String rating, String description){
-            dataDao.addDisk(title,rating,description );
+    public void addDisk(String title, String rating, String description, Long ownerId) {
+        diskDataProvider.addDisk(title, rating, description, ownerId);
     }
 
-    public List<Disk> getTakenDisks(Long id){
-        return dataDao.getTakenDisk(id);
+    public List<Disk> getTakenDisks(Long id) {
+        return diskDataProvider.getTakenDisk(id);
     }
 
-    public void rentDisk(Long diskId, Long userId){
-        dataDao.rentDisk(diskId,userId);
+    public void rentDisk(Long diskId, Long userId) {
+        diskDataProvider.rentDisk(diskId, userId);
     }
 
-    public void returnDisk(Long diskId, Long userId){
-        dataDao.returnDisk(diskId,userId);
+    public void returnDisk(Long diskId, Long userId) {
+        diskDataProvider.returnDisk(diskId, userId);
     }
 
-    public List<Disk> getGivenDisks(Long userId){
-        return dataDao.getGivenDisks(userId);
+    public List<Disk> getGivenDisks(Long userId) {
+        return diskDataProvider.getGivenDisks(userId);
     }
 
 }
