@@ -4,35 +4,33 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity()
 @Table(name = "DISK")
-public class Disk implements Serializable{
+public class DiskEntity implements Serializable{
 
     private Long id;
     private Long owner;
     private String title;
     private String rating;
     private String description;
-    private Set<Users> users = new HashSet<Users>();
+    private Set<UsersEntity> users = new HashSet<UsersEntity>();
 
-    public Disk() {
+    public DiskEntity() {
     }
 
-    public Disk(Long owner, String title, String rating, String description) {
+    public DiskEntity(Long owner, String title, String rating, String description) {
         this.owner = owner;
         this.title = title;
         this.rating = rating;
         this.description = description;
     }
 
-    public Disk(Long owner, String title, String rating, String description, Set<Users> users) {
+    public DiskEntity(Long owner, String title, String rating, String description, Set<UsersEntity> users) {
         this.owner = owner;
         this.title = title;
         this.rating = rating;
@@ -89,11 +87,11 @@ public class Disk implements Serializable{
     @JoinTable(name = "TAKENITEMS", joinColumns = {@JoinColumn(name = "DISK_ID", nullable = false, updatable = false)}
             , inverseJoinColumns = {@JoinColumn(name = "USERS_ID",nullable = false, updatable = false)})
     @JsonManagedReference
-    public Set<Users> getUsers() {
+    public Set<UsersEntity> getUsers() {
         return this.users;
     }
 
-    public void setUsers(Set<Users> users) {
+    public void setUsers(Set<UsersEntity> users) {
         this.users = users;
     }
 }

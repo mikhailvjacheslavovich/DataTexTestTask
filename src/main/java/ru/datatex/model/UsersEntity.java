@@ -11,7 +11,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "USERS")
-public class Users implements Serializable {
+public class UsersEntity implements Serializable {
 
     private Long id;
     private String name;
@@ -19,13 +19,13 @@ public class Users implements Serializable {
     private Integer age;
     private String email;
     private String password;
-    private Set<Disk> disks = new HashSet<Disk>(0);
+    private Set<DiskEntity> disks = new HashSet<DiskEntity>(0);
 
 
-    public Users() {
+    public UsersEntity() {
     }
 
-    public Users(String name, String surname, Integer age, String email, String password) {
+    public UsersEntity(String name, String surname, Integer age, String email, String password) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -53,11 +53,11 @@ public class Users implements Serializable {
     @JoinTable(name = "TAKENITEMS", joinColumns = {@JoinColumn(name = "USERS_ID", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "DISK_ID", nullable = false, updatable = false)})
     @JsonBackReference
-    public Set<Disk> getDisks() {
+    public Set<DiskEntity> getDisks() {
         return this.disks;
     }
 
-    public void setDisks(Set<Disk> disks) {
+    public void setDisks(Set<DiskEntity> disks) {
         this.disks = disks;
     }
 

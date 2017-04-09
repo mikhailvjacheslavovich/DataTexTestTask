@@ -2,9 +2,8 @@ package ru.datatex.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.datatex.model.Disk;
-import ru.datatex.model.Users;
-import ru.datatex.service.DiskService;
+import ru.datatex.model.DiskEntity;
+import ru.datatex.service.impl.DiskServiceImpl;
 
 import java.util.List;
 
@@ -12,24 +11,20 @@ import java.util.List;
 public class DiskController {
 
     @Autowired
-    DiskService diskService;
-
-    @RequestMapping(value = "/getUsers", method = RequestMethod.GET)
-    public List<Users> getAllUsers() {
-        return diskService.getUsers();
-    }
-
+    DiskServiceImpl diskService;
 
     @RequestMapping(value = "/getFreeDisks", method = RequestMethod.GET)
-    public List<Disk> getAllDisks() {
-        return diskService.getFreeDisks(new Long(4));
+    public List<DiskEntity> getAllDisks() {
+        return diskService.getFreeDisks();
     }
+
     @RequestMapping(value = "/getTakenDisks", method = RequestMethod.GET)
-    public List<Disk> getTakenDisk(@RequestParam(value = "id") Long id){
+    public List<DiskEntity> getTakenDisk(@RequestParam(value = "id") Long id){
         return diskService.getTakenDisks(id);
     }
+
     @RequestMapping(value = "/getGivenDisks", method = RequestMethod.GET)
-    public List<Disk> getGivenDisks(@RequestParam(value = "user_id") Long userId){
+    public List<DiskEntity> getGivenDisks(@RequestParam(value = "user_id") Long userId){
         return diskService.getGivenDisks(userId);
     }
 
@@ -49,8 +44,7 @@ public class DiskController {
         diskService.rentDisk(diskId,userId);
     }
     @RequestMapping(value = "/returnDisk", method = RequestMethod.POST)
-    public void returnDisk(@RequestParam(value = "disk_id") Long diskId,
-                           @RequestParam(value = "user_id") Long userId){
-        diskService.returnDisk(diskId,userId);
+    public void returnDisk(@RequestParam(value = "disk_id") Long diskId){
+        diskService.returnDisk(diskId);
     }
 }
