@@ -1,0 +1,26 @@
+<div ng-controller="givenDisksCtrl as vm">
+    <h3 class="panel-title">Взятые у меня диски</h3>
+
+    <div class="form-group">
+        <table class="table table-bordered">
+            <thread>
+                <tr>
+                    <th class="text-primary">Id</th>
+                    <th class="text-primary">Title</th>
+                    <th class="text-primary">Rating</th>
+                    <th class="text-primary">Description</th>
+                    <th class="text-primary">Кто взял</th>
+                </tr>
+            </thread>
+            <tbody>
+            <tr ng-repeat="u in vm.disks">
+                <td><span ng-bind="u.id"></span></td>
+                <td><span ng-bind="u.title"></span></td>
+                <td><span ng-bind="u.rating"></span></td>
+                <td><span ng-bind="u.description"></span></td>
+                <td><span ng-bind="u.whoTake"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

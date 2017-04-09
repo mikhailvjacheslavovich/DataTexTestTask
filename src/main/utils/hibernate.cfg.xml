@@ -10,7 +10,7 @@
         <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
 
 
-        <mapping class="ru.datatex.model.Users" />
-        <mapping class="ru.datatex.model.Disk" />
+        <mapping class="ru.datatex.model.UsersEntity" />
+        <mapping class="ru.datatex.model.DiskEntity" />
     </session-factory>
 </hibernate-configuration>

@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller("takenDisksCtrl", ['$scope', '$rootScope', 'DiskService', function ($scope, $rootScope, DiskService) {
+App.controller("takenDisksCtrl", ['$rootScope', 'DiskService', function ($rootScope, DiskService) {
     var self = this;
     self.disk = {id: 0, title: '', rating: '', description: ''};
     self.disks = [];
@@ -17,11 +17,11 @@ App.controller("takenDisksCtrl", ['$scope', '$rootScope', 'DiskService', functio
     };
 
     self.getTakenByMeDisks();
-    $scope.returnDisk = function (disk_id) {
-        DiskService.returnDisk(disk_id, $rootScope.userId);
-        self.getTakenByMeDisks();
+    self.returnDisk = function (disk_id) {
+        DiskService.returnDisk(disk_id).then(
+            function () {
+                self.getTakenByMeDisks();
+            }
+        );
     }
-
-
-
 }]);

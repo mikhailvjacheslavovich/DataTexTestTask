@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller("givenDisksCtrl", ['$scope','$rootScope', 'DiskService', function ($scope,$rootScope, DiskService) {
+App.controller("givenDisksCtrl", ['$rootScope', 'DiskService', function ($rootScope, DiskService) {
     var self = this;
     self.disk = {id: 0, title: '', rating: '', description: '', whoTake: ''};
     self.disks = [];

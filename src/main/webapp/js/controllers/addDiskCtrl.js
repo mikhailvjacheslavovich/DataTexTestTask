@@ -1,12 +1,13 @@
 'use strict';
 
-App.controller("addDiskCtrl", ['$scope', 'DiskService', function ($scope, DiskService) {
+App.controller("addDiskCtrl", ['$rootScope', 'DiskService', function ($rootScope, DiskService) {
     var self = this;
     self.disk = {title: '', rating: '', description: ''};
 
 
     self.addDisk = function () {
-        DiskService.addDisk(self.disk);
+        DiskService.addDisk(self.disk,$rootScope.userId);
+        self.disk = {title: '', rating: '', description: ''};
     };
     self.logined = function () {
         if ($rootScope.userId == 0)

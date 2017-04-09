@@ -23,7 +23,6 @@
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.search.default.directory_provider">uk.company.package.JdbcDirectoryProvider</prop>
                 <prop key="hibernate.default_schema">public</prop>
-                <!--<prop key="hibernate.hbm2ddl.auto">update</prop>-->
             </props>
         </property>
 
@@ -35,6 +34,6 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager" />
+    <tx:annotation-driven transaction-manager="transactionManager"   />
 
 </beans>

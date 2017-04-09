@@ -9,7 +9,7 @@
                 <input class="form-control" type="text" ng-model="vm.disk.rating" placeholder="Введите рейтинг"/>
                 <span class="text-info">Введите описание</span>
                 <input class="form-control" type="text" ng-model="vm.disk.description" placeholder="Введите описание"/>
-                <button ng-disabled="vm.logined()" class="btn-primary" ng-click="vm.addDisk()"><span class="alert-info">Добавить диск</span>
+                <button ng-disabled="!vm.logined()" class="btn-primary" ng-click="vm.addDisk()"><span class="alert-info">Добавить диск</span>
                 </button>
             </div>
         </div>

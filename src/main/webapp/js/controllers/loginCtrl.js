@@ -1,11 +1,13 @@
 'use strict';
 
-App.controller("loginCtrl", ['$scope', '$rootScope', 'DiskService', function ($scope, $rootScope, DiskService) {
+App.controller("loginCtrl", ['$rootScope', 'DiskService', function ($rootScope, DiskService) {
     var self = this;
     $rootScope.userId = 0;
+    self.email = '';
+    self.password = '';
     self.user = {name: '', surname: ''};
     self.logi = function () {
-        DiskService.getLogin($scope.email, $scope.password).then(
+        DiskService.getLogin(self.email, self.password).then(
             function (d) {
                 self.user = d;
                 $rootScope.userId = d.id;
@@ -18,7 +20,7 @@ App.controller("loginCtrl", ['$scope', '$rootScope', 'DiskService', function ($s
             return false;
         else
             return true;
-    }
+    };
 
 
     self.logOut = function () {

@@ -2,19 +2,6 @@
 
 App.factory('DiskService', ['$http', '$q', function ($http, $q) {
     return {
-        fetchAllUsers: function () {
-            return $http.get('/getUsers')
-                .then(
-                function (response) {
-                    return response.data;
-                },
-                function (errResponse) {
-                    console.error('error');
-                    return $q.reject(errResponse);
-                }
-            )
-        },
-
         getFreeDisks: function () {
             return $http.get('/getFreeDisks')
                 .then(
@@ -22,7 +9,7 @@ App.factory('DiskService', ['$http', '$q', function ($http, $q) {
                     return response.data;
                 },
                 function (errResponse) {
-                    console.error('error');
+                    console.error('error while getting free disks');
                     return $q.reject(errResponse);
                 }
             )
@@ -37,7 +24,7 @@ App.factory('DiskService', ['$http', '$q', function ($http, $q) {
                     return responce.data
                 },
                 function (errResponse) {
-                    console.error('error');
+                    console.error('error while getting taken disks');
                     return $q.reject(errResponse);
                 }
             )
@@ -53,7 +40,7 @@ App.factory('DiskService', ['$http', '$q', function ($http, $q) {
                     return response.data
                 },
                 function (errResponse) {
-                    console.error('error');
+                    console.error('error while getting given disks');
                     return $q.reject(errResponse);
                 }
             )
@@ -66,11 +53,11 @@ App.factory('DiskService', ['$http', '$q', function ($http, $q) {
                 params: {disk_id: disk_id, user_id: user_id}
             });
         },
-        returnDisk: function (disk_id, user_id) {
+        returnDisk: function (disk_id) {
             return $http({
                 method: 'POST',
                 url: '/returnDisk',
-                params: {disk_id: disk_id, user_id: user_id}
+                params: {disk_id: disk_id}
             });
         },
         addDisk: function (disk, owner_id) {
