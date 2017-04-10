@@ -3,13 +3,13 @@
 var App = angular.module('myApp',["ngRoute"]);
 App.config(function ($routeProvider) {
     $routeProvider
-        .when("/freedisks",{
+        .when("/freeDisks",{
             templateUrl:"/views/freeDisks.html",
             controller:"freeDisksCtrl"
-        }).when("/takendisks",{
+        }).when("/takenDisks",{
             templateUrl:"/views/takenDisks.html",
             controller:"takenDisksCtrl"
-        }).when("/givendisks",{
+        }).when("/givenDisks",{
             templateUrl:"/views/givenDisks.html",
             controller:"givenDisksCtrl"
         }).when("/addDisk",{

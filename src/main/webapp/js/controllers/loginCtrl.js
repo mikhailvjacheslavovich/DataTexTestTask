@@ -9,8 +9,15 @@ App.controller("loginCtrl", ['$rootScope', 'DiskService', function ($rootScope, 
     self.logi = function () {
         DiskService.getLogin(self.email, self.password).then(
             function (d) {
-                self.user = d;
-                $rootScope.userId = d.id;
+                if (d == ''){
+                    alert("Вы ыыели неправильно логин или пароль");
+                    self.email = '';
+                    self.password = '';
+                }
+                else {
+                    self.user = d;
+                    $rootScope.userId = d.id;
+                }
             }
         )
     };
@@ -25,6 +32,8 @@ App.controller("loginCtrl", ['$rootScope', 'DiskService', function ($rootScope, 
 
     self.logOut = function () {
         $rootScope.userId = 0;
+        self.email = '';
+        self.password = '';
     }
 }]);
 

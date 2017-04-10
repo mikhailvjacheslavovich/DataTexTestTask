@@ -25,16 +25,18 @@
 <body ng-app="myApp">
 
 <div ng-controller="UserController as vm">
+
+
     <div class="form-group" ng-include="'views/loginPage.html'">
 
     </div>
 
-    <h2 class="text-info">Таблица дисков</h2>
+    <h2 class="text-info">{{vm.greetingMessage}}</h2>
 
     <div>
-        <a href="#freedisks">Свободные диски</a>
-        <a href="#takendisks">Взятые мной диски</a>
-        <a href="#givendisks">Отданные диски</a>
+        <a href="#freeDisks">Свободные диски</a>
+        <a href="#takenDisks">Взятые мной диски</a>
+        <a href="#givenDisks">Отданные диски</a>
         <a href="#addDisk">Добавить диск</a>
     </div>
 

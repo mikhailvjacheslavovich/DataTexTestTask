@@ -1,17 +1,19 @@
 <div ng-controller="loginCtrl as vm">
     <div class="col-lg-12">
         <div class="form-group" ng-hide="vm.logined()">
-            <label class="text-info">Email:</label>
-            <input type="text" class="form-group" id="userName" ng-model="vm.email"> </input>
-            <label class="text-info">Password:</label>
-            <input type="password" class="form-group" id="password" ng-model="vm.password"> </input>
+            <form name="loginForm" class="form-group">
+                <label class="text-info">Email:</label>
+                <input type="text" class="form-group" id="userName" ng-model="vm.email" required> </input>
+                <label class="text-info">Password:</label>
+                <input type="password" class="form-group" id="password" ng-model="vm.password" required> </input>
 
-            <button class="btn btn-primary" ng-click="vm.logi()">Логин</button>
-
+                <button type="button" class="btn btn-primary" ng-disabled="loginForm.$invalid"
+                       ng-click="vm.logi()">Логин</button>
+            </form>
         </div>
         <div ng-show="vm.logined()">
-        <label  class="text-primary"><h4>Добрый день {{vm.user.name}} {{vm.user.surname}}</h4></label>
-        <button class="btn btn-primary" ng-click="vm.logOut()">Выйти</button>
+            <label class="text-primary"><h4>Добрый день {{vm.user.name}} {{vm.user.surname}}</h4></label>
+            <button class="btn btn-primary" ng-click="vm.logOut()">Выйти</button>
         </div>
     </div>
 </div>

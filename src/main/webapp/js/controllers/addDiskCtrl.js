@@ -9,7 +9,7 @@ App.controller("addDiskCtrl", ['$rootScope', 'DiskService', function ($rootScope
         DiskService.addDisk(self.disk,$rootScope.userId);
         self.disk = {title: '', rating: '', description: ''};
     };
-    self.logined = function () {
+    self.addingDisk = function () {
         if ($rootScope.userId == 0)
             return false;
         else

@@ -14,7 +14,7 @@ App.controller("givenDisksCtrl", ['$rootScope', 'DiskService', function ($rootSc
                 }
             },
             function (errResponce) {
-                console.error('error');
+                console.error('error while getting given disks');
             }
         )
     };

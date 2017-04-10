@@ -1,17 +1,29 @@
 <div ng-controller="addDiskCtrl as vm">
     <div class="chart-vertical-grid-lines">
         <div class="col-lg-5">
-            <div class="form-group">
-                <span class="text-info">Введите название</span>
-                <input class="form-control" type="text" ng-model="vm.disk.title"
-                       placeholder="Введите название"/>                </input>
-                <span class="text-info">Введите рейтинг</span>
-                <input class="form-control" type="text" ng-model="vm.disk.rating" placeholder="Введите рейтинг"/>
-                <span class="text-info">Введите описание</span>
-                <input class="form-control" type="text" ng-model="vm.disk.description" placeholder="Введите описание"/>
-                <button ng-disabled="!vm.logined()" class="btn-primary" ng-click="vm.addDisk()"><span class="alert-info">Добавить диск</span>
-                </button>
-            </div>
+            <form name="addDiskForm" class="form-group">
+                <div class="form-group">
+                    <span class="text-info">Введите название</span>
+                    <input class="form-control" type="text" ng-model="vm.disk.title" name="titleInput"
+                           placeholder="Введите название" ng-minlength="1" required/>
+                    <span ng-show="!vm.disk.title" class="has-error">Это обязательное поле для ввода</span>
+                </div>
+
+                <div class="form-group">
+                    <span class="text-info">Введите рейтинг</span>
+                    <input class="form-control" type="text" ng-model="vm.disk.rating"
+                           placeholder="Введите рейтинг" required/>
+                    <span ng-show="!vm.disk.rating" class="has-error">Это обязательное поле для ввода</span>
+                </div>
+                <div class="form-group">
+                    <span class="text-info">Введите описание</span>
+                    <input class="form-control" type="text" ng-model="vm.disk.description"
+                           placeholder="Введите описание" required/>
+                    <span ng-show="!vm.disk.description" class="has-error">Это обязательное поле для ввода</span>
+                </div>
+                <button type="submit" ng-disabled="!vm.addingDisk() || addDiskForm.$invalid" class="btn-primary"
+                       ng-click="vm.addDisk()">Добавить диск</button>
+            </form>
         </div>
     </div>
 

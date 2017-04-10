@@ -3,7 +3,8 @@ package ru.datatex.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.datatex.model.DiskEntity;
-import ru.datatex.service.impl.DiskServiceImpl;
+import ru.datatex.service.DiskService;
+
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
 public class DiskController {
 
     @Autowired
-    DiskServiceImpl diskService;
+    DiskService diskService;
 
     @RequestMapping(value = "/getFreeDisks", method = RequestMethod.GET)
     public List<DiskEntity> getAllDisks() {

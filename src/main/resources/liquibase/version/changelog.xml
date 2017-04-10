@@ -70,25 +70,25 @@
         <insert tableName="users">
             <column name="id">1</column>
             <column name="name">Sergey</column>
-            <column name="surname">Ponomarev</column>
+            <column name="surname">Petrov</column>
             <column name="age">25</column>
-            <column name="email">lox@ya.ru</column>
+            <column name="email">sp1991@ya.ru</column>
             <column name="password">qwerty</column>
         </insert>
         <insert tableName="users">
             <column name="id">2</column>
             <column name="name">Anatoly</column>
-            <column name="surname">Kasparov</column>
+            <column name="surname">Raight</column>
             <column name="age">20</column>
-            <column name="email">kasper@ya.ru</column>
+            <column name="email">raight@ya.ru</column>
             <column name="password">12345</column>
         </insert>
         <insert tableName="users">
             <column name="id">3</column>
-            <column name="name">Kashtan</column>
+            <column name="name">Alexeu</column>
             <column name="surname">Lama-Piter</column>
             <column name="age">45</column>
-            <column name="email">Zeus-lama@ya.ru</column>
+            <column name="email">piter-lama@ya.ru</column>
             <column name="password">qwerty</column>
         </insert>
 
@@ -111,9 +111,9 @@
         <insert tableName="disk">
             <column name="id">2</column>
             <column name="owner">1</column>
-            <column name="title">мир новый дивный</column>
+            <column name="title">Дивный новый мир</column>
             <column name="rating">16+</column>
-            <column name="description">Отличная книга</column>
+            <column name="description">Отличная фильм</column>
         </insert>
         <insert tableName="disk">
             <column name="id">3</column>
@@ -131,31 +131,31 @@
         </insert>
         <insert tableName="disk">
             <column name="id">5</column>
-            <column name="owner">1</column>
+            <column name="owner">2</column>
             <column name="title">Древняя Греция</column>
             <column name="rating">10+</column>
             <column name="description">Про Грецию</column>
         </insert>
         <insert tableName="disk">
             <column name="id">6</column>
-            <column name="owner">1</column>
-            <column name="title">Про меопатамию</column>
+            <column name="owner">2</column>
+            <column name="title">Сделай все сам</column>
             <column name="rating">18+</column>
-            <column name="description">Древняя месопатамия</column>
+            <column name="description">Пособие по дому</column>
         </insert>
         <insert tableName="disk">
             <column name="id">7</column>
             <column name="owner">1</column>
-            <column name="title">Война</column>
+            <column name="title">Семилетняя Война</column>
             <column name="rating">18+</column>
-            <column name="description">Хорошая книга</column>
+            <column name="description">Хорошая вещь</column>
         </insert>
         <insert tableName="disk">
             <column name="id">8</column>
             <column name="owner">1</column>
-            <column name="title">мир</column>
+            <column name="title">Станция Мир</column>
             <column name="rating">18+</column>
-            <column name="description">Хорошая книга</column>
+            <column name="description">Хорошая вещь</column>
         </insert>
 
         <insert tableName="takenitems">
