@@ -1,0 +1,3 @@
+1) подключить базу данных бат скрипт для hssql db базы прилагается  jdbc:hsqldb:hsql://localhost:9001/datatex   пользователь SA пароля нет 
+2) перед запуском программы выполнить maven goal  mvn liquibase:update чтобы наквтить базу данных
+3) в run configurations прописать запуск на tomcat 
